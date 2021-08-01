@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "app-ventas-front"
+    }
+  },
+  "defaultProject": "app-ventas-front",
+  "cli": {
+    "analytics": "50084ac0-eaff-479a-b061-a4258f42e678"
+  }
 }

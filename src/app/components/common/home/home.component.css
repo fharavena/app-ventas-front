@@ -1,0 +1,177 @@
+  /* Sections */
+  .module,
+  .module-small {
+    position: relative;
+    padding: 140px 0;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+
+  /* Dark background */
+
+  .bg-dark-30 {
+    color: #fff;
+  }
+
+  .bg-dark-30:before {
+    position: absolute;
+    background: rgba(2, 2, 2, 0.4);
+    content: " ";
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .parallax-bg {
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .mb-30 {
+    margin-bottom: 30px !important;
+  }
+
+  .mb-40 {
+    margin-bottom: 40px !important;
+  }
+
+  /*--------------------------------------------------------------
+      Buttons
+  --------------------------------------------------------------*/
+  .btn {
+    border-radius: 0;
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    padding: 8px 37px;
+  }
+
+  .btn.active.focus,
+  .btn.active:focus,
+  .btn.focus,
+  .btn:active.focus,
+  .btn:active:focus,
+  .btn:focus {
+    outline: 0;
+  }
+
+  .btn.btn-round {
+    border-radius: 2px;
+  }
+
+  .btn.btn-circle {
+    border-radius: 30px;
+  }
+
+  .btn.btn-w {
+    background: rgba(255, 255, 255, 0.8);
+    color: #111;
+  }
+
+  .btn.btn-w:hover,
+  .btn.btn-w:focus {
+    background: white;
+    color: #111;
+  }
+
+  .btn.btn-g {
+    background: #e5e5e5;
+    color: #111;
+  }
+
+  .btn.btn-g:hover,
+  .btn.btn-g:focus {
+    background: #d8d8d8;
+    color: #111;
+  }
+
+  .btn.btn-border-w {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    color: #fff;
+  }
+
+  .btn.btn-border-w:hover,
+  .btn.btn-border-w:focus {
+    background: #fff;
+    border-color: transparent;
+    color: #111;
+  }
+
+  .btn.btn-d {
+    background: rgba(17, 17, 17, 0.8);
+    color: #fff;
+  }
+
+  .btn.btn-d:hover,
+  .btn.btn-d:focus {
+    background: #111111;
+  }
+
+  .btn.btn-b {
+    background: #111111;
+    color: #fff;
+  }
+
+  .btn.btn-b:hover,
+  .btn.btn-b:focus {
+    background: rgba(17, 17, 17, 0.8);
+  }
+
+  .btn-border-d {
+    background: transparent;
+    border: 1px solid #111111;
+    color: #111;
+  }
+
+
+
+
+  /* Caption */
+  .titan-caption {
+    position: relative;
+    display: table;
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .titan-caption {
+    position: relative;
+    display: table;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .caption-content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .titan-title-size-1 {
+    letter-spacing: 4px;
+    font-size: 15px;
+  }
+
+  .titan-title-size-2 {
+    line-height: 1.3;
+    letter-spacing: 3px;
+    font-size: 18px;
+    opacity: .8;
+  }
+
+  .titan-title-size-3 {
+    letter-spacing: 16px;
+    font-size: 46px;
+  }
+
+  .titan-title-size-4 {
+    letter-spacing: 24px;
+    font-weight: 400;
+    font-size: 48px;
+  }

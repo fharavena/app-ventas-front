@@ -1,0 +1,73 @@
+<div *ngIf="!ventas" class="col-12 loading">
+  <div class="loader" style="margin: auto; margin-top: 15%"></div>
+</div>
+
+<div *ngIf="ventas">
+  <div class="row mx-5 my-2">
+    <div class='col-12'>
+      <!-- <a [routerLink]="['/venta']">volver</a> -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>          
+          <li class="breadcrumb-item active" aria-current="page">Venta</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row mx-5">
+    <h1>Ventas</h1>
+  </div>
+
+  <div class='row'>
+    <div class='col-10'></div>
+    <div class='col-2'>
+      <a href="" class="btn btn-success mx-1">
+        crear venta
+      </a>
+    </div>
+  </div>
+  <div class="row mx-5 my-2">
+    <div class='col-12'>
+
+      <table class="table table-hover table-primary">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">fecha</th>
+            <th scope="col">cliente</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventas">
+            <td>{{venta.id}}</td>
+            <td>{{venta.fecha}}</td>
+            <td>{{venta.nombre}}</td>
+            <td style="text-align: right;">
+              <a [routerLink]="['detalle',venta.id]" class="btn btn-primary mx-1">
+                ver
+              </a>
+              <a [routerLink]="['editar',venta.id]" class="btn btn-warning mx-1">
+                editar
+              </a>
+              <a [routerLink]="" class="btn btn-danger mx-1" (click)="deleteSale(venta.id)">
+                eliminar
+              </a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-10'></div>
+    <div class='col-2'>
+      <a href="" class="btn btn-success mx-1">
+        crear venta
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div *ngIf="!saleDetail" class="col-12 loading">
+  <div class="loader" style="margin: auto; margin-top: 15%"></div>
+</div>
+
+<div *ngIf="saleDetail">
+  <div class="row mx-5 my-2">
+    <div class='col-12'>
+      <!-- <a [routerLink]="['/venta']">volver</a> -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/venta']">Venta</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Detalle</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row mx-5 my-2">
+    <div class='col-12'>
+      <h3>Detalle</h3>
+    </div>
+  </div>
+  <div class="row mx-5 my-2">
+    <div class='col-10'>
+      cliente: {{ saleDetail["cliente"]["nombre"] }}<br>
+      descuento: {{saleDetail["descuento"]}} %<br>
+    </div>
+    <div class='col-2'>
+      fecha: {{saleDetail["fecha"]}} <br>
+    </div>
+  </div>
+  <div class="row mx-5 my-2">
+    <div class='col-12'>
+      <table class="table table-hover table-primary">
+        <thead>
+          <tr>
+            <th scope="col">producto</th>
+            <th scope="col">precio unitario</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of saleDetail['items']">
+            <td>{{item["producto"]["nombre"]}}</td>
+            <td>{{item["producto"]["precio"]}}</td>
+            <td>{{item["cantidad"]}}</td>
+            <td>{{item["subtotal"]}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>total sin descuento</td>
+            <td>{{ saleDetail["total"] }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>total con descuento</td>
+            <td>{{ (saleDetail["total"] - (saleDetail["descuento"] * saleDetail["total"])/100).toFixed(0) }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>iva</td>
+            <td> {{ (saleDetail["iva"]).toFixed(0) }} <br></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>total con iva</td>
+            <td>{{ ((saleDetail["total"] + (saleDetail["descuento"] * saleDetail["total"])/100)*1.19).toFixed(0) }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
