@@ -1,10 +1,10 @@
-export interface SalePostDTO {
+export class SalePostDTO {
     descuento: number;
-    cliente:   number;
-    item:      Item[];
+    cliente: number;
+    item: Array<Item>;
 }
 
-export interface Item {
+export class Item {
     cantidad: number;
     producto: number;
 }

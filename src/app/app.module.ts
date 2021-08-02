@@ -18,6 +18,8 @@ import { ProductaddComponent } from './components/product/productadd/productadd.
 import { ProducteditComponent } from './components/product/productedit/productedit.component';
 import { SaledetailComponent } from './components/sale/saledetail/saledetail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

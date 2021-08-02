@@ -1,1 +1,119 @@
-<p>saleadd works!</p>
+<div class="row mx-5">
+  <h1>Crear</h1>
+  <div class='col-12'>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/venta']">Venta</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lista</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mx-5">
+  <div *ngIf="!clients || !products" class="col-12 loading">
+    <div class="loader" style="margin: auto; margin-top: 15%"></div>
+  </div>
+</div>
+
+<div class="row mx-5 my-2" *ngIf="msgError">
+  <div class='col-12'>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ msgError }}
+
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div class="row mx-5" *ngIf="clients && products">
+    <hr>
+    <div class="col-12">
+      <div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+        {{msgSuccess}}
+      </div>
+    </div>
+    <div class="form-group col-12 col-sm-6 my-4">
+      <label for="cliente">Cliente</label>
+      <select class="form-select" id="cliente" formControlName="cliente">
+        <option *ngFor="let client of clients" [ngValue]="client.id">{{client.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-group col-12 col-sm-6 my-4">
+      <label for="rut">Descuento</label>
+      <input type="number" class="form-control" id="descuento" formControlName="descuento">
+    </div>
+
+    <hr>
+
+    <div class="form-group col-12 col-sm-12 my-4">
+      <h3>Detalle </h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>nombre</th>
+            <th>cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of detailForms">
+            <td>{{getProductById(item.producto).nombre}}</td>
+            <td>{{item.cantidad}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Agregar Producto
+    </button>
+
+    <hr>
+
+    <div class="form-group col-12 mt-5 input-position text-center">
+      <button type="submit" class="btn btn-primary submitbutton">Crear venta</button>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<form [formGroup]="itemForm" (ngSubmit)="addDetail()">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="form-group col-12 col-sm-6 my-4">
+
+              <label for="producto">Producto</label>
+              <select class="form-select" id="producto" formControlName="producto"
+                (change)="getPrecioProducto($event.target.value)">
+                <option *ngFor="let product of products" [ngValue]="product.id">{{product.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group col-12 col-sm-6 my-4">
+              <label for="rut">Cantidad</label>
+              <input type="number" class="form-control" id="cantidad" formControlName="cantidad" (keyup)="calcularSubtotalProducto()">
+            </div>
+            <div class="form-group col-12 my-4">
+              Precio: {{ productoPrecioTemp }} <br>
+              Subtotal: {{ ProductoSubtotalTemp }}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary submitbutton" data-bs-dismiss="modal">Agregar detalle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

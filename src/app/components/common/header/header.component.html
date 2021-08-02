@@ -10,7 +10,6 @@
         <span class="fs-4">Wherex - Evaluación fullstack junior</span>
       </a>
 
-
       <ul  class="nav nav-pills">
         <li *ngFor="let page of options" class="nav-item"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
             [routerLink]="[page.link]" class="nav-link text-dark">{{page.value}}</a></li>

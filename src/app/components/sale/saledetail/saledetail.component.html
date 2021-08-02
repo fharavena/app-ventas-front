@@ -1,32 +1,38 @@
-<div *ngIf="!saleDetail" class="col-12 loading">
-  <div class="loader" style="margin: auto; margin-top: 15%"></div>
+<div class="row mx-5">
+  <h1>Ventas</h1>
+  <div class='col-12'>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/venta']">Venta</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalle</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mx-5">
+  <div *ngIf="!saleDetail && !msgError" class="col-12 loading">
+    <div class="loader" style="margin: auto; margin-top: 15%"></div>
+  </div>
+</div>
+
+<div class="row mx-5 my-2" *ngIf="msgError">
+  <div class='col-12'>
+    <div class="alert alert-danger" role="alert">
+      {{ msgError }}
+    </div>
+  </div>
 </div>
 
 <div *ngIf="saleDetail">
-  <div class="row mx-5 my-2">
-    <div class='col-12'>
-      <!-- <a [routerLink]="['/venta']">volver</a> -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a [routerLink]="['']">Inicio</a></li>
-          <li class="breadcrumb-item"><a [routerLink]="['/venta']">Venta</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Detalle</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
 
   <div class="row mx-5 my-2">
-    <div class='col-12'>
-      <h3>Detalle</h3>
-    </div>
-  </div>
-  <div class="row mx-5 my-2">
-    <div class='col-10'>
+    <div class='col-6'>
       cliente: {{ saleDetail["cliente"]["nombre"] }}<br>
       descuento: {{saleDetail["descuento"]}} %<br>
     </div>
-    <div class='col-2'>
+    <div class='col-6' style="text-align: right;">
       fecha: {{saleDetail["fecha"]}} <br>
     </div>
   </div>
@@ -48,33 +54,26 @@
             <td>{{item["cantidad"]}}</td>
             <td>{{item["subtotal"]}}</td>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>total sin descuento</td>
-            <td>{{ saleDetail["total"] }}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>total con descuento</td>
-            <td>{{ (saleDetail["total"] - (saleDetail["descuento"] * saleDetail["total"])/100).toFixed(0) }}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>iva</td>
-            <td> {{ (saleDetail["iva"]).toFixed(0) }} <br></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>total con iva</td>
-            <td>{{ ((saleDetail["total"] + (saleDetail["descuento"] * saleDetail["total"])/100)*1.19).toFixed(0) }}</td>
-          </tr>
+
         </tbody>
       </table>
 
+    </div>
+  </div>
+  <div class="row mx-5 my-2">
+    <div class='col-8'>
+    </div>
+    <div class='col-2' style="text-align: right;">
+      <p>total sin descuento:</p>
+      <p>total con descuento:</p>
+      <p>IVA:</p>
+      <p>total con iva:</p>
+    </div>
+    <div class='col-2' style="text-align: right;">
+      <p>{{ saleDetail["total"] }}</p>
+      <p>{{ (saleDetail["total"] - (saleDetail["descuento"] * saleDetail["total"])/100).toFixed(0) }}</p>
+      <p>{{ (saleDetail["iva"]).toFixed(0) }}</p>
+      <p>{{ ((saleDetail["total"] + (saleDetail["descuento"] * saleDetail["total"])/100)*1.19).toFixed(0) }}</p>
     </div>
   </div>
 

@@ -27,6 +27,25 @@ export class SaleService {
     return this._http.get(url, { headers });
   }
 
+  delete_sale(id) {
+    let headers = new HttpHeaders().set(
+      "Content-Type",
+      "application/json"
+    );
+    let url = global.url + 'sale/' + id;
+    return this._http.delete(url, { headers });
+  }
+
+
+  save_sale(params): Observable<any> {
+    let headers = new HttpHeaders().set(
+      "Content-Type",
+      "application/json"
+    );
+    let url = global.url + 'sale/' ;
+    return this._http.post(url, params, { headers });
+  }
+
 
 
 }

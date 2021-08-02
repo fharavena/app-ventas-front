@@ -15,14 +15,14 @@ export class HeaderComponent implements OnInit {
       "link": "/venta",
       "value": "Venta"
     },
-    {
-      "link": "/cliente",
-      "value": "Cliente"
-    },
-    {
-      "link": "/producto",
-      "value": "Producto"
-    }
+    // {
+    //   "link": "/cliente",
+    //   "value": "Cliente"
+    // },
+    // {
+    //   "link": "/producto",
+    //   "value": "Producto"
+    // }
   ]
 
   
